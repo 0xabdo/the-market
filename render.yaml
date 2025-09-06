@@ -1,0 +1,49 @@
+services:
+  # Backend API Service
+  - type: web
+    name: gaming-marketplace-api
+    env: node
+    plan: free
+    buildCommand: cd server && npm install
+    startCommand: cd server && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: MONGODB_URI
+        fromDatabase:
+          name: gaming-marketplace-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+      - key: EMAIL_USER
+        sync: false
+      - key: EMAIL_PASS
+        sync: false
+      - key: API_KEY
+        generateValue: true
+      - key: FRONTEND_URL
+        value: https://gaming-marketplace-client.onrender.com
+
+  # Frontend Static Site
+  - type: web
+    name: gaming-marketplace-client
+    env: static
+    plan: free
+    buildCommand: cd client && npm install && npm run build
+    staticPublishPath: ./client/build
+    envVars:
+      - key: REACT_APP_API_URL
+        value: https://gaming-marketplace-api.onrender.com
+
+databases:
+  - name: gaming-marketplace-db
+    plan: free
+    databaseName: gaming-marketplace
