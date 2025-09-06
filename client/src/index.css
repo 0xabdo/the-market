@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Import Boxicons CSS */
+@import 'boxicons/css/boxicons.min.css';
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  body {
+    @apply bg-dark-900 text-white;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary-500 hover:bg-primary-600 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-700 hover:bg-gray-600 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+  
+  .btn-outline {
+    @apply border border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+  
+  .input-field {
+    @apply w-full px-3 py-2 bg-gray-800 border border-gray-600 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent;
+  }
+  
+  .card {
+    @apply bg-gray-800 rounded-lg shadow-sm border border-gray-700 p-6;
+  }
+  
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  
+  .badge-primary {
+    @apply bg-primary-500/20 text-primary-400;
+  }
+  
+  .badge-success {
+    @apply bg-green-500/20 text-green-400;
+  }
+  
+  .badge-warning {
+    @apply bg-yellow-500/20 text-yellow-400;
+  }
+  
+  .badge-danger {
+    @apply bg-red-500/20 text-red-400;
+  }
+  
+  /* Boxicons are imported via CSS */
+  
+  /* Custom animations and effects */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+  
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+  
+  @keyframes glow {
+    from { box-shadow: 0 0 20px rgba(59, 130, 246, 0.5); }
+    to { box-shadow: 0 0 30px rgba(59, 130, 246, 0.8); }
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #1f2937;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #3b82f6;
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2563eb;
+  }
+  
+  /* Glass morphism effect */
+  .glass {
+    background: rgba(31, 41, 55, 0.5);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(75, 85, 99, 0.3);
+  }
+
+  /* Moving reviews animations */
+  .animate-scroll-right {
+    animation: scroll-right 30s linear infinite;
+  }
+
+  .animate-scroll-left {
+    animation: scroll-left 30s linear infinite;
+  }
+
+  @keyframes scroll-right {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+}
