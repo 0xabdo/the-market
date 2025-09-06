@@ -24,7 +24,7 @@ const securityLogSchema = new mongoose.Schema({
   method: {
     type: String,
     required: true,
-    enum: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS']
+    enum: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS', 'HEAD']
   },
   path: {
     type: String,
